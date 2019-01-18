@@ -1,0 +1,1 @@
+start adb shell input keyevent 82
