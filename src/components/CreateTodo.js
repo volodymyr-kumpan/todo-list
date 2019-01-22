@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
+
+import { BaseButton } from '../ui';
 
 class CreateTodo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
+            title: ''
         };
     }
 
@@ -14,6 +16,9 @@ class CreateTodo extends Component {
         this.props.onCreateTodo({
             title: this.state.title
         })
+        if (this.props.onTodoCreated) {
+            this.props.onTodoCreated();
+        }
     }
 
     render() {
@@ -21,19 +26,18 @@ class CreateTodo extends Component {
             <View
                 style={styles.container}
             >
-                <View>
-                    <TextInput
-                        onChangeText={(title) => this.setState({ title })}
-                        value={this.state.title}
-                        placeholder="Title"
-                    />
-                </View>
-                <View>
-                    <Button
-                        title="Create"
-                        onPress={this.onCreateTodoHandler}
-                        color='#0069d9' />
-                </View>
+                <TextInput
+                    onChangeText={(title) => this.setState({ title })}
+                    value={this.state.title}
+                    placeholder="Title"
+                    autoFocus={true}
+                />
+                <BaseButton
+                    onPress={this.onCreateTodoHandler}
+                    color='#007bff'
+                >
+                    Create
+                </BaseButton>
             </View>
         );
     }
