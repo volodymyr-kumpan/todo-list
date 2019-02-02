@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import CreateTodo from '../containers/CreateTodo';
+import Colors from '../constants/Colors';
+import { DefaultText } from '../ui';
+import CreateTodo from '../components/CreateTodo';
 
-class CreateTodoScreen extends Component {
+class CreateTodoScreen extends React.Component {
     static navigationOptions = {
-        title: 'Create todo',
+        headerTitle: <DefaultText>{'Create todo'}</DefaultText>
     };
 
     onTodoCreatedHandler = () => {
@@ -26,6 +28,6 @@ export default CreateTodoScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F5FCFF',
+        backgroundColor: Colors.Background
     }
 });

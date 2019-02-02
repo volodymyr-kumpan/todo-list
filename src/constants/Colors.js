@@ -8,5 +8,7 @@ export default {
     Light: '#f8f9fa',
     Dark: '#343a40',
 
-    Background: '#F5FCFF'
+    Background: '#F5FCFF',
+    TextWhite: '#fff',
+    TextDark: '#212529'
 }

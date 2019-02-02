@@ -1,28 +1,38 @@
 import React from 'react';
+import { View, FlatList, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FlatList, StyleSheet } from 'react-native';
 
 import Todo from './Todo';
 
-const TodoList = ({ todos, onDeleteTodo }) => (
-  <FlatList
-    style={ styles.container }
-    data={ todos }
-    keyExtractor={ (item, index) => item.id.toString() }
-    renderItem={ ({ item }) => (
-      <Todo
-        todo={ item }
-        onDelete={ () => onDeleteTodo(item.id) }
-      />
-    ) }
-  />
+const TodoList = ({ todos, onPressTodo }) => (
+  <View
+    style={styles.container}>
+    <FlatList
+      data={todos}
+      keyExtractor={(item, index) => item.id.toString()}
+      renderItem={({ item }) => (
+        <Todo
+          todo={item}
+          onPress={() => onPressTodo(item.id)}
+        />
+      )}
+    />
+  </View>
 );
 
-export default TodoList;
+const mapStateToProps = state => ({
+  todos: state.todos.todos
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(TodoList);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    marginHorizontal: 6
   }
 });
 
@@ -33,5 +43,5 @@ TodoList.propTypes = {
       title: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  onDeleteTodo: PropTypes.func.isRequired
+  onPressTodo: PropTypes.func.isRequired
 };

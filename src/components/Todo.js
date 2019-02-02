@@ -1,34 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 
-const Todo = ({ todo, onDelete }) => (
-  <View style={ styles.container }>
-    <Text style={ styles.title }>{ todo.title }</Text>
-    <TouchableOpacity onPress={ onDelete }>
-      <Icon size={ 30 } name='ios-trash' color='#dc3545' />
-    </TouchableOpacity>
+import { P } from '../ui';
+import Colors from '../constants/Colors';
+
+const Todo = ({ todo, onPress }) => (
+  <View style={styles.container}>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View>
+        <P numberOfLines={1}>{todo.title}</P>
+        <P numberOfLines={1}>{todo.description}</P>
+      </View>
+    </TouchableWithoutFeedback>
   </View>
 );
 export default Todo;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-
-    backgroundColor: '#28a745',
-    margin: 10,
-    marginBottom: 0,
-    padding: 10,
-    height:50
-  },
-  title: {
-    fontSize: 16,
-    color: '#fff',
+    borderBottomWidth: 1,
+    borderColor: Colors.Primary,
   }
 });
 
@@ -37,5 +29,5 @@ Todo.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired
   }).isRequired,
-  onDelete: PropTypes.func.isRequired
+  onPress: PropTypes.func.isRequired
 };

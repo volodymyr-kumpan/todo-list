@@ -1,40 +1,61 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { connect } from 'react-redux';
+import { View, StyleSheet } from 'react-native';
 
-import TodoList from '../containers/TodoList';
-import { BaseButton } from '../ui';
+import TodoList from '../components/TodoList';
+import NavHeaderTitle from '../components/NavHeaderTitle';
+import NavHeaderButtons from '../components/NavHeaderButtons';
+import { IconButton } from '../ui';
 import Colors from '../constants/Colors';
 
-class TodoListScreen extends Component {
-    static navigationOptions = {
-        title: 'Todo list',
+class TodoListScreen extends React.Component {
+    static navigationOptions = ({ navigation }) => {
+        return {
+            headerTitle: (<NavHeaderTitle title={'Todo list'} />),
+            headerRight: (
+                <NavHeaderButtons>
+                    <IconButton onPress={() => { navigation.getParam('onOpenCreateTodoScreenHandler')() }} icon='md-add' />
+                </NavHeaderButtons>
+            )
+        };
     };
 
     onOpenCreateTodoScreenHandler = () => {
-        this.props.navigation.push('CreateTodo');
+        this.props.navigation.navigate('CreateTodo');
+    }
+
+    onOpenTodoDetailsScreenHandler = (id) => {
+        const todo = this.props.todos.find(todo => {
+            return todo.id === id;
+        });
+        this.props.navigation.navigate('TodoDetails', { todo: todo });
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <BaseButton
-                    onPress={this.onOpenCreateTodoScreenHandler}
-                    color={Colors.Primary}
-                >
-                    Create
-                </BaseButton>
-                <TodoList />
+                <TodoList
+                    onPressTodo={this.onOpenTodoDetailsScreenHandler} />
             </View>
         );
     }
+
+    componentDidMount() {
+        this.props.navigation.setParams({ onOpenCreateTodoScreenHandler: this.onOpenCreateTodoScreenHandler });
+    }
 }
 
-export default TodoListScreen;
+const mapStateToProps = state => ({
+    todos: state.todos.todos
+});
+
+export default connect(
+    mapStateToProps
+)(TodoListScreen);
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'flex-start',
-        backgroundColor: Colors.Background
+        backgroundColor: Colors.backgroundColor
     }
 });

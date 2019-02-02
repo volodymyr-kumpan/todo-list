@@ -1,27 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, StyleSheet } from 'react-native';
 
-const BaseButton = props => (
-  <TouchableOpacity onPress={props.onPress}>
-    <View style={[styles.button, { backgroundColor: props.color }]}>
-      <Text style={styles.text}>
+const BaseButton = props => {
+  return (
+    <TouchableOpacity onPress={props.onPress}>
+      <View style={[props.style, styles.button]}>
         {props.children}
-      </Text>
-    </View>
-  </TouchableOpacity>
-);
+      </View>
+    </TouchableOpacity>
+  )
+};
 
 export default BaseButton;
 
 const styles = StyleSheet.create({
   button: {
-    padding: 10,
-    borderRadius: 5
-  },
-  text: {
-    fontSize: 16,
-    color: '#fff',
+    height: 36
   }
 });
 

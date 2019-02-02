@@ -1,7 +1,113 @@
-import { CREATE_TODO, UPDATE_TODO, DELETE_TODO, CLOSE_TODO } from '../actions/actionTypes';
+import { CREATE_TODO, UPDATE_TODO, DELETE_TODO } from '../actions/actionTypes';
 
 const initialState = {
-  todos: []
+  todos: [
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very veryvery very very very very veryvery very very very very veryvery very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    },
+    {
+      id: Math.random(),
+      title: 'Very very very very very very very very very very very very very very looong title',
+      description: 'And very very very very very very very very very very very very looong description'
+    },
+    {
+      id: Math.random(),
+      title: 'Title',
+      description: 'Description'
+    }
+  ]
 };
 
 const todos = (state = initialState, action) => {
@@ -13,7 +119,8 @@ const todos = (state = initialState, action) => {
           ...state.todos,
           {
             id: Math.random(),
-            title: action.todo.title
+            title: action.todo.title,
+            description: action.todo.description
           }
         ]
       }
@@ -24,7 +131,8 @@ const todos = (state = initialState, action) => {
           if (todo.id === action.todo.id) {
             return {
               ...todo,
-              title: action.todo.title
+              title: action.todo.title,
+              description: action.todo.description
             }
           }
           return todo;
@@ -36,10 +144,6 @@ const todos = (state = initialState, action) => {
         todos: state.todos.filter(todo => {
           return todo.id !== action.id;
         })
-      };
-    case CLOSE_TODO:
-      return {
-        ...state
       };
     default:
       return state;
