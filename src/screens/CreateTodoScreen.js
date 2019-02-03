@@ -2,12 +2,12 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import Colors from '../constants/Colors';
-import { DefaultText } from '../ui';
+import NavHeaderTitle from '../components/NavHeaderTitle';
 import CreateTodo from '../components/CreateTodo';
 
 class CreateTodoScreen extends React.Component {
     static navigationOptions = {
-        headerTitle: <DefaultText>{'Create todo'}</DefaultText>
+        headerTitle: (<NavHeaderTitle title={'Create todo'} />)
     };
 
     onTodoCreatedHandler = () => {

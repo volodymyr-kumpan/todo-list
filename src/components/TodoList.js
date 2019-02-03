@@ -32,7 +32,6 @@ export default connect(
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 6
   }
 });
 

@@ -16,7 +16,9 @@ export default BaseButton;
 
 const styles = StyleSheet.create({
   button: {
-    height: 36
+    height: 36,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

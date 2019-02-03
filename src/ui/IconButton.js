@@ -8,12 +8,12 @@ import Colors from '../constants/Colors';
 
 const IconButton = props => {
   let color = Colors.Primary;
-  if (props.color){
+  if (props.color) {
     color = props.color;
   }
   return (
-    <BaseButton onPress={props.onPress} style={[props.style, styles.button, {borderColor: color}]}>
-      <Icon name={props.icon} size={32} color={color} />
+    <BaseButton onPress={props.onPress} style={styles.button}>
+      <Icon name={props.icon} size={36} color={color} />
     </BaseButton>
   )
 };
@@ -22,11 +22,7 @@ export default IconButton;
 
 const styles = StyleSheet.create({
   button: {
-    width: 36,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 1,
-    borderRadius: 4
+    width: 36
   }
 });
 

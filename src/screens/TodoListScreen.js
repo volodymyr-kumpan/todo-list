@@ -56,6 +56,6 @@ export default connect(
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.backgroundColor
+        backgroundColor: Colors.Background
     }
 });

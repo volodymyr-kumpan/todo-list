@@ -10,7 +10,7 @@ const TextButton = props => {
   return (
     <BaseButton onPress={props.onPress} style={[props.style, styles.button]}>
       <DefaultText style={styles.text}>
-        {props.text}
+        {props.text.toUpperCase()}
       </DefaultText>
     </BaseButton>
   )
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     borderRadius: 4
   },
   text: {
-    color: Colors.TextWhite,
+    color: Colors.Light
   }
 });
 

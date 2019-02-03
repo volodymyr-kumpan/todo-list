@@ -6,7 +6,7 @@ import { DefaultText } from '../ui/index';
 
 const NavHeaderTitle = ({ title }) => (
     <View style={styles.container}>
-        <DefaultText>{title}</DefaultText>
+        <DefaultText style={{ fontSize: 20, fontWeight: 'bold' }}>{title}</DefaultText>
     </View>
 );
 

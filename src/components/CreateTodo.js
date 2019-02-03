@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { createTodo } from '../store/actions';
 import { TextButton, DefaultTextInput } from '../ui';
 
-class CreateTodo extends Component {
+class CreateTodo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
