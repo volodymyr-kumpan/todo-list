@@ -5,21 +5,26 @@ import PropTypes from 'prop-types';
 
 import Todo from './Todo';
 
-const TodoList = ({ todos, onPressTodo }) => (
-  <View
-    style={styles.container}>
-    <FlatList
-      data={todos}
-      keyExtractor={(item, index) => item.id.toString()}
-      renderItem={({ item }) => (
-        <Todo
-          todo={item}
-          onPress={() => onPressTodo(item.id)}
-        />
-      )}
-    />
-  </View>
-);
+const TodoList = ({ todos, onPressTodo }) => {
+  let todosSorted = todos.sort(function (a, b) {
+    return new Date(b.dateCreated) - new Date(a.dateCreated);
+  });
+  return (
+    <View
+      style={styles.container}>
+      <FlatList
+        data={todosSorted}
+        keyExtractor={(item, index) => item.id.toString()}
+        renderItem={({ item }) => (
+          <Todo
+            todo={item}
+            onPress={() => onPressTodo(item.id)}
+          />
+        )}
+      />
+    </View>
+  );
+};
 
 const mapStateToProps = state => ({
   todos: state.todos.todos

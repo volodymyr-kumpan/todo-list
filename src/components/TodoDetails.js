@@ -2,7 +2,37 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { P } from '../ui';
+import { P, DefaultText } from '../ui';
+import Colors from '../constants/Colors';
+
+const Label = ({ text }) => (
+    <View
+        style={
+            {
+                height: 50,
+                backgroundColor: Colors.Info,
+                justifyContent: 'flex-end',
+                padding: 6,
+            }
+        }
+    >
+        <DefaultText>
+            {text.toUpperCase()}
+        </DefaultText>
+    </View>
+);
+
+const Desc = ({ text }) => (
+    <View
+        style={
+            {
+                margin: 6
+            }
+        }
+    >
+        <P>{text}</P>
+    </View>
+);
 
 class TodoDetails extends React.Component {
     constructor(props) {
@@ -13,8 +43,10 @@ class TodoDetails extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <P>{this.todo.title}</P>
-                <P>{this.todo.description}</P>
+                <Label text={'title'} />
+                <Desc text={this.todo.title} />
+                <Label text={'description'} />
+                <Desc text={this.todo.description} />
             </View>
         );
     };
@@ -24,7 +56,6 @@ export default TodoDetails;
 
 const styles = StyleSheet.create({
     container: {
-        margin: 6
     }
 });
 

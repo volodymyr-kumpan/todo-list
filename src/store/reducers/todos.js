@@ -5,107 +5,16 @@ const initialState = {
     {
       id: Math.random(),
       title: 'Title',
-      description: 'Description'
+      description: 'Description',
+      isCompleated: false,
+      dateCreated: Date.now()
     },
     {
       id: Math.random(),
       title: 'Very very very very very very very very veryvery very very very very veryvery very very very very veryvery very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description'
-    },
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description'
+      description: 'And very very very very very very very very very very very very looong description',
+      isCompleated: true,
+      dateCreated: Date.now()
     }
   ]
 };
@@ -118,9 +27,10 @@ const todos = (state = initialState, action) => {
         todos: [
           ...state.todos,
           {
+            ...action.todo,
             id: Math.random(),
-            title: action.todo.title,
-            description: action.todo.description
+            isCompleated: false,
+            dateCreated: Date.now()
           }
         ]
       }
@@ -129,11 +39,7 @@ const todos = (state = initialState, action) => {
         ...state,
         todos: state.todos.map(todo => {
           if (todo.id === action.todo.id) {
-            return {
-              ...todo,
-              title: action.todo.title,
-              description: action.todo.description
-            }
+            return action.todo;
           }
           return todo;
         })

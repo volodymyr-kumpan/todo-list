@@ -5,20 +5,21 @@ import BaseTextInput from './BaseTextInput';
 import Font from '../constants/Font';
 import Colors from '../constants/Colors';
 
-const DefaultTextInput = props => (
+const TextArea = props => (
   <BaseTextInput
-    {...props}
-    multiline={false}
-    numberOfLines={1}
+    {...props} 
+    multiline={true}
+    numberOfLines={4}
     style={[props.style, styles.input]} />
 );
 
-export default DefaultTextInput;
+export default TextArea;
 
 const styles = StyleSheet.create({
   input: {
     fontSize: Font.FontSize,
-    height: 35,
+    textAlignVertical: 'top',
+    height: 82,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderWidth: 1,

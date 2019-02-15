@@ -8,25 +8,29 @@ class Checkbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: false
+      value: this.props.value
     };
   }
 
   onChangeValueHandler = () => {
     this.setState(previousState => (
       { value: !previousState.value }
-    ));
+    ), () => {
+      if (this.props.onChangeValue) {
+        this.props.onChangeValue(this.state.value);
+      }
+    });
   }
 
   render() {
     let icon = 'md-square-outline';
     if (this.state.value) {
-      icon = 'md-checkbox-outline';
+      icon = 'md-checkbox';
     }
     return (
       <TouchableWithoutFeedback onPress={this.onChangeValueHandler}>
         <View style={styles.checkbox}>
-          <Icon name={icon} size={24} color={Colors.Secondary} />
+          <Icon name={icon} size={24} color={Colors.Primary} />
         </View>
       </TouchableWithoutFeedback>
     );
