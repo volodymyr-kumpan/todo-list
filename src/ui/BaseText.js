@@ -11,7 +11,7 @@ const BaseText = props => (
     },
     props.style,
     {
-      //fontFamily: Font.FontFamily
+      fontFamily: Font.FontFamily
     }
   ]} />
 );

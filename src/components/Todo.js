@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: 10,
+    marginHorizontal: 5,
     borderBottomWidth: 1,
     borderColor: Colors.Primary,
     height: 50
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
 
 Todo.propTypes = {
   todo: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
   }).isRequired,
   onPress: PropTypes.func.isRequired

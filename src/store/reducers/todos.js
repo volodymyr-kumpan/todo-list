@@ -1,39 +1,24 @@
-import { CREATE_TODO, UPDATE_TODO, DELETE_TODO } from '../actions/actionTypes';
+import { LOAD_TODOS, CREATE_TODO, UPDATE_TODO, DELETE_TODO } from '../actions/actionTypes';
 
 const initialState = {
-  todos: [
-    {
-      id: Math.random(),
-      title: 'Title',
-      description: 'Description',
-      isCompleated: false,
-      dateCreated: Date.now()
-    },
-    {
-      id: Math.random(),
-      title: 'Very very very very very very very very veryvery very very very very veryvery very very very very veryvery very very very very very very very very very very looong title',
-      description: 'And very very very very very very very very very very very very looong description',
-      isCompleated: true,
-      dateCreated: Date.now()
-    }
-  ]
+  todos: []
 };
 
 const todos = (state = initialState, action) => {
   switch (action.type) {
+    case LOAD_TODOS:
+      return {
+        ...state,
+        todos: action.todos
+      };      
     case CREATE_TODO:
       return {
         ...state,
         todos: [
           ...state.todos,
-          {
-            ...action.todo,
-            id: Math.random(),
-            isCompleated: false,
-            dateCreated: Date.now()
-          }
+          action.todo
         ]
-      }
+      };
     case UPDATE_TODO:
       return {
         ...state,

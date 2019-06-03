@@ -21,6 +21,12 @@ class Checkbox extends React.Component {
       }
     });
   }
+  
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.state.value) {
+      this.setState({ value: nextProps.value });
+    }
+  }
 
   render() {
     let icon = 'md-square-outline';

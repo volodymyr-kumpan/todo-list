@@ -5,7 +5,7 @@ import { View, StyleSheet } from 'react-native';
 import TodoList from '../components/TodoList';
 import NavHeaderTitle from '../components/NavHeaderTitle';
 import NavHeaderButtons from '../components/NavHeaderButtons';
-import { IconButton } from '../ui';
+import { IconButton, LoadingIndicator } from '../ui';
 import Colors from '../constants/Colors';
 
 class TodoListScreen extends React.Component {
@@ -36,6 +36,9 @@ class TodoListScreen extends React.Component {
             <View style={styles.container}>
                 <TodoList
                     onPressTodo={this.onOpenTodoDetailsScreenHandler} />
+                {
+                    this.props.isLoading && <LoadingIndicator />
+                }
             </View>
         );
     }
@@ -46,7 +49,8 @@ class TodoListScreen extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    todos: state.todos.todos
+    todos: state.todos.todos,
+    isLoading: state.ui.isLoading
 });
 
 export default connect(

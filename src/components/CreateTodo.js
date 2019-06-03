@@ -16,9 +16,13 @@ class CreateTodo extends React.Component {
     }
 
     onCreateTodoHandler = () => {
+        if (this.state.title.trim() === ""){
+            alert("The Title field is required.");
+            return;
+        }
         this.props.onCreateTodo({
-            title: this.state.title,
-            description: this.state.description
+            title: this.state.title.trim(),
+            description: this.state.description.trim()
         })
         if (this.props.onTodoCreated) {
             this.props.onTodoCreated();

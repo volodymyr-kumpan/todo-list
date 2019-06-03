@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 
 TodoDetails.propTypes = {
     todo: PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired
     }).isRequired
