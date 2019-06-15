@@ -1,5 +1,5 @@
 export default {
-    FontFamily: 'SpaceMono',
+    //FontFamily: 'SpaceMono',
     FontSize: 14,
-    MarginVertical: 3
+    MarginVertical: 0
 }

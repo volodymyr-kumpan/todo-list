@@ -33,7 +33,7 @@ export const createTodo = (todo) => {
         const newTodo = {
             ...todo,
             isCompleated: false,
-            dateCreated: Date.now()
+            dateCreated: new Date().toLocaleString()
         };
         fetch("https://todo-list-efb85.firebaseio.com/todos.json", {
             method: "POST",
@@ -56,13 +56,17 @@ export const createTodo = (todo) => {
 
 export const updateTodo = (todo) => {
     return dispatch => {
+        let updatedTodo = {
+            ...todo,
+            dateCompleated: todo.isCompleated ? new Date().toLocaleString() : null
+        };
         dispatch({
             type: UPDATE_TODO,
-            todo
+            todo: updatedTodo
         });
-        fetch("https://todo-list-efb85.firebaseio.com/todos/" + todo.id + ".json", {
+        fetch("https://todo-list-efb85.firebaseio.com/todos/" + updatedTodo.id + ".json", {
             method: "PATCH",
-            body: JSON.stringify(todo)
+            body: JSON.stringify(updatedTodo)
         })
         .catch(err => console.log(err))
         .then(res => res.json())

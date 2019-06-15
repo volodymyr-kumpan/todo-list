@@ -26,7 +26,7 @@ class Todo extends React.Component {
     if (this.props.todo.title) {
       title = (
         <P numberOfLines={1}
-          style={{ textDecorationLine: this.props.todo.isCompleated ? 'line-through' : 'none' }}
+          style={[styles.title, { textDecorationLine: this.props.todo.isCompleated ? 'line-through' : 'none' }]}
         >{this.props.todo.title}</P>
       );
     }
@@ -34,6 +34,12 @@ class Todo extends React.Component {
     if (this.props.todo.description) {
       description = (
         <P numberOfLines={1} style={styles.description}>{this.props.todo.description}</P>
+      );
+    }
+    let dateCompleated = null;
+    if (this.props.todo.isCompleated && this.props.todo.dateCompleated) {
+      dateCompleated = (
+        <P style={styles.dateCompleated}>{"Compleated: " + this.props.todo.dateCompleated}</P>
       );
     }
     return (
@@ -46,6 +52,7 @@ class Todo extends React.Component {
             <View>
               {title}
               {description}
+              {dateCompleated}
             </View>
           </TouchableWithoutFeedback>
         </View>
@@ -70,18 +77,23 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderBottomWidth: 1,
     borderColor: Colors.Primary,
-    height: 50
+    height: 52
   },
   container1: {
     width: 36,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   container2: {
-    flex: 1,
     marginLeft: 6
+  },
+  title: {
   },
   description: {
     fontSize: 12,
+    color: Colors.Secondary
+  },
+  dateCompleated: {
+    fontSize: 10,
     color: Colors.Secondary
   }
 });
