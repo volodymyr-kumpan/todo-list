@@ -4,8 +4,7 @@ const initialState = {
     isLoading: false
 }
 
-const reducer = (state = initialState, action) => {
-    console.log(action.type);
+const ui = (state = initialState, action) => {
     switch(action.type){
         case UI_START_LOADING:
             return {
@@ -22,4 +21,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+export default ui;

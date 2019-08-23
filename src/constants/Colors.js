@@ -9,4 +9,4 @@ export default {
     Dark: '#343a40',
 
     Background: '#F5FCFF'
-}
+};
