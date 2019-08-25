@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.6.1",
     "react": "16.6.3",
     "react-native": "0.57.8",
     "react-native-gesture-handler": "1.0.12",
